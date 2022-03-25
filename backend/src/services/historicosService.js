@@ -3,16 +3,22 @@
 import query from '../repository/repository';
 
 function validarData(dataCorrida) {
-  // TODO: Validar data futura
-  return dataCorrida;
+  const receivedDate = new Date(dataCorrida).getTime();
+  const nowDate = new Date().getTime();
+  if (receivedDate > nowDate) {
+    return false;
+  }
+  return true;
 }
 
 export async function createHistoricoService(historico) {
   const {
     competidor_id, pista_corrida_id, data_corrida, tempo_gasto,
   } = historico;
-  // TODO: corrigir data futura
   const dataCorridaValida = validarData(data_corrida);
+  if (!dataCorridaValida) {
+    return { message: 'Data futura inválida' };
+  }
   const data = await query(
     'INSERT INTO historico_corrida \
     (competidor_id, pista_corrida_id, data_corrida, tempo_gasto) \
@@ -32,6 +38,9 @@ export async function updateHistoricoService(historico) {
     tempo_gasto,
   } = historico;
   const dataCorridaValida = validarData(data_corrida);
+  if (!dataCorridaValida) {
+    return { message: 'Data futura inválida!' };
+  }
   const data = await query(
     'UPDATE historico_corrida \
     SET competidor_id = ?, pista_corrida_id = ?, data_corrida = ?, tempo_gasto = ? \
