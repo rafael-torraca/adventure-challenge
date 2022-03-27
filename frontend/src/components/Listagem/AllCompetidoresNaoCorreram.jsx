@@ -46,10 +46,7 @@ export const AllCompetidoresNaoCorreram = () => {
         <TableHead>
           <TableRow className={classes.thead}>
             <TableCell>Id</TableCell>
-            <TableCell>Id Competidor</TableCell>
-            <TableCell>Id Pista Corrida</TableCell>
-            <TableCell>Data Corrida</TableCell>
-            <TableCell>Tempo Gasto</TableCell>
+            <TableCell>Nome Competidor</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -58,10 +55,7 @@ export const AllCompetidoresNaoCorreram = () => {
             competidores.map((competidores) => (
               <TableRow key={competidores.id} className={classes.row}>
                 <TableCell>{competidores.id}</TableCell>
-                <TableCell>{competidores.competidor_id}</TableCell>
-                <TableCell>{competidores.pista_corrida_id}</TableCell>
-                <TableCell>{competidores.data_corrida}</TableCell>
-                <TableCell>{competidores.tempo_gasto}</TableCell>
+                <TableCell>{competidores.nome}</TableCell>
               </TableRow>
             ))
           }
