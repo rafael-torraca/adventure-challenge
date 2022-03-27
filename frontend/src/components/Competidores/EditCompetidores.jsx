@@ -37,7 +37,7 @@ export const EditCompetidores = () => {
 
   const editCompetidoresForm = (competidorData) => {
     editCompetidores(competidorData);
-    history.push('./all-competidores')
+    history.push('/all-competidores')
   };
 
   useEffect(() => {
@@ -49,7 +49,6 @@ export const EditCompetidores = () => {
     } catch (e) {
       console.log(e);
     }
-
   }, []);
 
   return (

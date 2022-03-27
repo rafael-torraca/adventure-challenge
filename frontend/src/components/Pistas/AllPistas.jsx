@@ -69,11 +69,23 @@ export const AllPistas = () => {
               </TableRow>
             ))
           }
+          {/* {
+            pistas.map((pistas) => (
+              <TableRow key={pistas.id} className={classes.row}>
+                <TableCell>{pistas.id}</TableCell>
+                <TableCell>{pistas.descricao}</TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" style={{ marginRight: "10px" }} component={Link} to={`/edit-pistas/${pistas.id}`}>Edit</Button>
+                  <Button variant="contained" color="secondary" onClick={() => deletePistasData(pistas.id)}>Delete</Button>
+                </TableCell>
+              </TableRow>
+            ))
+          } */}
         </TableBody>
       </Table >
       <div className={classes.addButton}>
         <Fab color="primary" aria-label="add" >
-          <NavLink exact to='/add-pistas' style={{ textDecoration: 'none' }}><AddCircleOutline /></NavLink>
+          <NavLink exact to='/add-pistas'><AddCircleOutline style={{ textDecoration: 'none' }} /></NavLink>
         </Fab>
       </div>
     </>
