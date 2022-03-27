@@ -9,7 +9,9 @@ export async function getPistasUtilizadasService() {
     FROM \
       historico_corrida \
     INNER JOIN \
-      pista_corrida ON historico_corrida.pista_corrida_id = pista_corrida.id;',
+      pista_corrida ON historico_corrida.pista_corrida_id = pista_corrida.id \
+    GROUP BY \
+      pista_corrida.descricao;',
   );
   return data;
 }
@@ -34,11 +36,16 @@ export async function getCompetidoresTempoMedioService() {
 export async function getCompetidoresNaoCorreramService() {
   const data = await query(
     'SELECT \
-      competidores.nome, \
-      historico_corrida.competidor_id \
-    FROM \
-      competidores \
-      INNER JOIN historico_corrida ON historico_corrida.competidor_id < 0;',
+    c.id, \
+    c.nome \
+  FROM \
+    competidores c \
+  WHERE \
+    c.id NOT IN ( \
+      SELECT \
+        historico_corrida.competidor_id \
+      FROM \
+        historico_corrida);',
   );
 
   return data;

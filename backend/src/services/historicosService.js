@@ -23,7 +23,7 @@ export async function createHistoricoService(historico) {
     'INSERT INTO historico_corrida \
     (competidor_id, pista_corrida_id, data_corrida, tempo_gasto) \
     VALUES (?, ?, ?, ?);',
-    [competidor_id, pista_corrida_id, dataCorridaValida, tempo_gasto],
+    [competidor_id, pista_corrida_id, data_corrida, tempo_gasto],
   );
 
   return data;
@@ -45,7 +45,7 @@ export async function updateHistoricoService(historico) {
     'UPDATE historico_corrida \
     SET competidor_id = ?, pista_corrida_id = ?, data_corrida = ?, tempo_gasto = ? \
     WHERE id = ?',
-    [competidor_id, pista_corrida_id, dataCorridaValida, tempo_gasto, id],
+    [competidor_id, pista_corrida_id, data_corrida, tempo_gasto, id],
   );
 
   return data;
